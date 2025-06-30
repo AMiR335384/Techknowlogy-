@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzbekistan Products Exhibition - Electronics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        [data-lang="fa"] * {
+            font-family: Shabnam, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* Islamic Geometric Pattern */
+        .islamic-header {
+            background-color: #1e3a8a;
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1)),
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1));
+            background-size: 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .islamic-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, transparent 60%, rgba(30, 58, 138, 0.9) 60.5%),
+                repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(59, 130, 246, 0.3) 29px, rgba(59, 130, 246, 0.3) 30px);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .brand-tag {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -8px;
+            left: 0;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        .inventory-indicator {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Islamic star pattern for decorative elements */
+        .islamic-star {
+            width: 100px;
+            height: 100px;
+            background: 
+                linear-gradient(36deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(72deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(108deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(144deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(180deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(216deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(252deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(288deg, #3b82f6 50%, transparent 50%),
+                linear-gradient(324deg, #3b82f6 50%, transparent 50%);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            position: absolute;
+        }
+        
+        .islamic-border {
+            border: 2px solid transparent;
+            border-image: 
+                linear-gradient(45deg, #3b82f6, #8b5cf6) 1;
+            border-image-slice: 1;
+        }
+
+        .language-switcher {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background: rgba(255,255,255,0.2);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="gradient-bg font-sans">
+    <!-- Header with Islamic Geometric Design -->
+    <header class="islamic-header text-white py-8 shadow-lg relative overflow-hidden">
+        <div class="islamic-overlay"></div>
+        
+        <!-- Decorative Islamic stars -->
+        <div class="islamic-star top-10 left-10"></div>
+        <div class="islamic-star bottom-10 right-10"></div>
+        <div class="islamic-star top-1/4 right-20"></div>
+        <div class="islamic-star bottom-1/3 left-1/4"></div>
+        
+        <div class="container mx-auto px-4 relative z-20">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="mr-4 islamic-border p-3 rounded-full">
+                        <i class="fas fa-tv text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold">Uzbekistan Products Exhibition</h1>
+                        <p class="text-blue-200 mt-1 translate" data-key="premium">Premium Electronics & Appliances</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <div class="language-switcher flex items-center space-x-2 mr-4">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="uz">UZ</button>
+                        <button class="lang-btn" data-lang="fa">FA</button>
+                    </div>
+                    <div class="flex items-center bg-blue-900 bg-opacity-50 px-4 py-2 rounded-full">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span class="font-semibold">+998 90 123 4567</span>
+                    </div>
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> <span class="translate" data-key="contact">Contact Us</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Islamic pattern description -->
+            <div class="mt-8 pt-6 border-t border-blue-700 border-opacity-30">
+                <div class="flex flex-wrap justify-center gap-6 text-blue-100 text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-drafting-compass mr-2"></i>
+                        <span>Islamic Geometric Design</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-star mr-2"></i>
+                        <span>Star Polygon Pattern</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-layer-group mr-2"></i>
+                        <span>Relief/Embossed Effect</span>
+                    </div>
+                </div>
+                <p class="text-center text-blue-200 mt-4 text-xs">
+                    Inspired by Moorish architecture (e.g., Alhambra in Spain), Mashrabiya screens, and modern Islamic decor
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-white bg-opacity-90">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+                        <span class="text-blue-600 translate" data-key="cutting">Cutting-edge Technology from Uzbekistan's Finest Brands</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 translate" data-key="discover">
+                        Discover premium electronics with official warranty and exceptional quality, crafted with Uzbekistan's renowned craftsmanship.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold transition flex items-center justify-center">
+                            Shop Now <i class="fas fa-arrow-right ml-3"></i>
+                        </button>
+                        <button class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-semibold transition flex items-center justify-center">
+                            View All Products
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-blue-100 rounded-full opacity-20"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-100 rounded-full opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                          alt="Electronics showcase"
+                          class="rounded-xl shadow-xl w-full h-auto border-4 border-white">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Televisions Section -->
+        <section class="mb-20">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-10">
+                <h2 class="text-3xl font-bold text-gray-800 section-title">
+                    <i class="fas fa-tv text-blue-500 mr-3"></i> High-Quality Televisions
+                </h2>
+                <div class="flex items-center bg-blue-100 text-blue-800 px-5 py-2 rounded-full mt-4 md:mt-0">
+                    <span class="inventory-indicator mr-2">•</span>
+                    <span class="font-medium">Real-time inventory tracking</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ARTEL TVs -->
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        ARTEL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="85-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">85-inch TV (2024 Model)</h3>
+                    <p class="text-gray-600 mb-4">Ultra HD | Smart TV | Android OS</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$1,299</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$1,499</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        ARTEL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1571415060716-baff5f717c37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="65-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">65-inch TV</h3>
+                    <p class="text-gray-600 mb-4">Smart TV | Android OS | 4K Resolution</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$899</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$999</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        ARTEL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1595&q=80"
+                              alt="25-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">25-inch TV</h3>
+                    <p class="text-gray-600 mb-4">HD Ready | Energy Efficient | Compact</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$249</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$299</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MY TECH TVs -->
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        MY TECH
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                              alt="55-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">55-inch TV</h3>
+                    <p class="text-gray-600 mb-4">4K HDR | Smart TV | Dolby Audio</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$699</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$799</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        MY TECH
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80"
+                              alt="50-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">50-inch TV</h3>
+                    <p class="text-gray-600 mb-4">Smart LED | Full HD | Voice Control</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$549</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$649</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        MY TECH
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                              alt="25-inch TV"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">25-inch TV</h3>
+                    <p class="text-gray-600 mb-4">Compact & Lightweight | HD Ready</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$229</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$279</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Washing Machines Section -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-800 mb-10 section-title">
+                <i class="fas fa-tshirt text-blue-500 mr-3"></i> Smart Washing Machines
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- ARTEL Washing Machines -->
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        ARTEL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1583744949094-527fccf1e1a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="Washing Machine"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Fully Automatic 8kg</h3>
+                    <p class="text-gray-600 mb-4">Anti-Allergy System | 15 Programs</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$499</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$549</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        ARTEL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1626804475297-41608eaae809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="Washing Machine with Dryer"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">8kg + Separate Dryer</h3>
+                    <p class="text-gray-600 mb-4">Energy A++ | Digital Display</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$649</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$699</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Other Brands -->
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        IDEAL
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="Washing Machine"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">7.5kg + Dryer</h3>
+                    <p class="text-gray-600 mb-4">Quick Wash | Child Lock</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$579</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$629</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 product-card relative">
+                    <div class="brand-tag bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        PREMIER
+                    </div>
+                    <div class="flex justify-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              alt="Washing Machine"
+                              class="h-48 object-contain">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">10kg (High Power)</h3>
+                    <p class="text-gray-600 mb-4">Direct Drive | Smart Control</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-blue-600 font-bold text-lg">$729</span>
+                            <span class="text-gray-400 text-sm line-through ml-2">$799</span>
+                        </div>
+                        <button class="bg-blue-100 text-blue-600 hover:bg-blue-200 px-4 py-2 rounded-full text-sm font-medium transition">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="bg-white rounded-xl p-8 mb-16 shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 section-title">
+                <i class="fas fa-star text-blue-500 mr-3"></i> Why Choose Our Products
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-blue-50">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Official Warranty</h3>
+                    <p class="text-gray-600">All products come with manufacturer warranty for peace of mind.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-blue-50">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                    <p class="text-gray-600">Quick nationwide shipping with reliable courier services.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-blue-50">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Dedicated customer service team always ready to help.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Uzbekistan Products</h3>
+                    <p class="text-gray-400">Showcasing the finest electronics and appliances from Uzbekistan's leading manufacturers.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Televisions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Washing Machines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refrigerators</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Air Conditioners</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Tashkent, Uzbekistan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+998 90 123 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@uzproducts.uz</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Uzbekistan Products Exhibition. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Translation dictionary
+        const translations = {
+            en: {
+                contact: "Contact Us",
+                premium: "Premium Electronics & Appliances",
+                cutting: "Cutting-edge Technology from Uzbekistan's Finest Brands",
+                discover: "Discover premium electronics with official warranty and exceptional quality, crafted with Uzbekistan's renowned craftsmanship.",
+                shop: "Shop Now",
+                view: "View All Products",
+                tvs: "High-Quality Televisions",
+                washing: "Smart Washing Machines",
+                why: "Why Choose Our Products",
+                warranty: "Official Warranty",
+                delivery: "Fast Delivery",
+                support: "24/7 Support"
+            },
+            uz: {
+                contact: "Biz bilan bog'lanish",
+                premium: "Sifatli Elektronika va Maishiy Texnika",
+                cutting: "O'zbekistonning eng yaxshi brendlaridan zamonaviy texnologiyalar",
+                discover: "O'zbekistonning mashhur hunarmandchiligi bilan yaratilgan, kafolatli va yuqori sifatli elektronikani kashf eting.",
+                shop: "Xarid qilish",
+                view: "Barcha mahsulotlar",
+                tvs: "Yuqori sifatli televizorlar",
+                washing: "Aqlli kir yuvish mashinalari",
+                why: "Nega bizning mahsulotlarimizni tanlaysiz?",
+                warranty: "Rasmiy kafolat",
+                delivery: "Tez yetkazib berish",
+                support: "24/7 qo'llab-quvvatlash"
+            },
+            fa: {
+                contact: "تماس با ما",
+                premium: "الکترونیک و لوازم خانگی با کیفیت",
+                cutting: "فناوری پیشرفته از بهترین برندهای ازبکستان",
+                discover: "کشف الکترونیک با کیفیت با گارانتی رسمی و کیفیت استثنایی، ساخته شده با صنعتگری مشهور ازبکستان.",
+                shop: "خرید کنید",
+                view: "مشاهده همه محصولات",
+                tvs: "تلویزیون های با کیفیت بالا",
+                washing: "ماشین های لباسشویی هوشمند",
+                why: "چرا محصولات ما را انتخاب کنید؟",
+                warranty: "گارانتی رسمی",
+                delivery: "تحویل سریع",
+                support: "پشتیبانی 24/7"
+            }
+        };
+
+        // Language switcher functionality
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.dataset.lang;
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update all translatable elements
+                document.querySelectorAll('.translate').forEach(el => {
+                    const key = el.dataset.key;
+                    el.textContent = translations[lang][key];
+                });
+            });
+        });
+
+        // Product cart functionality
+        document.querySelectorAll('.product-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('h3').textContent;
+                alert(`Added ${productName} to your cart!`);
+            });
+        });
+    </script>
+</body>
+</html>
